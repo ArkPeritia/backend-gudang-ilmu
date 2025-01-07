@@ -3,7 +3,7 @@ import { BaseEntity } from "../utils/BaseEntity.js";
 
 // template buat semua table
 @Entity()
-export class Review extends BaseEntity {
+export class Order extends BaseEntity {
   @Property({type: 'number'})
   tax;
 
