@@ -1,5 +1,6 @@
-import { PrimaryKey, Property, t, Entity } from "@mikro-orm/core";
+import { PrimaryKey, Property, t, Entity, OneToOne } from "@mikro-orm/core";
 import { BaseEntity } from "../utils/BaseEntity.js";
+import { Order } from "./OrderEntity.js";
 
 // template buat semua table
 @Entity()
@@ -12,6 +13,9 @@ export class Payment extends BaseEntity {
 
   @Property({type: 'string'})
   proofOfPayment;
+
+  @OneToOne(() => Order)
+  order;
 
   constructor(data) {
     this.type = data.type;
