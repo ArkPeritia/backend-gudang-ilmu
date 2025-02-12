@@ -1,14 +1,12 @@
 import { StatusCodes } from "http-status-codes";
-import { AuthenticationService } from "./authenticationService.js";
 import { Router } from "express";
 
 export class AuthenticationController {
-    constructor(){
+    constructor(service){
         // import service
-        this.service = new AuthenticationService();
+        this.service = service
         this.login = this.login.bind(this)
     }
-
 
     // membuat router
     createRouter() {
@@ -37,9 +35,9 @@ export class AuthenticationController {
         })
     }
 
-    getAll(req,res){
+    async getAll(req,res){
         const search = req.query.search
-        const getData = this.service.getAll(search);
+        const getData = await this.service.getAll(search);
         return res.status(StatusCodes.OK).json(getData);
     }
 }
