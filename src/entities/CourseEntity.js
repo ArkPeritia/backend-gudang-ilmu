@@ -76,6 +76,6 @@ export const Course = new EntitySchema({
     totalSchedule: { type: "number" },
     level: { type: "string" },
     desc: { type: "string" },
-    status: { type: "boolean" },
+    status: { type: "string" },
   },
 });
