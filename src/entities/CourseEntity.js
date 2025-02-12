@@ -63,8 +63,6 @@
 import { EntitySchema } from "@mikro-orm/core";
 import { BaseEntity } from "../utils/BaseEntity.js";
 
-;
-
 export const Course = new EntitySchema({
   name: "Course",
   tableName: "course",
