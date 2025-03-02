@@ -28,7 +28,13 @@ export const Report = new EntitySchema({
   tableName: "report",
   extends: BaseEntity,
   properties: {
-    reason: { type: "string" },
-    isActive: { type: "boolean" }
-  },
+    reason: { type: "string" },
+    isActive: { type: "boolean" },
+    order: { kind: "1:1", type: "Order" },
+    user: { kind: "m:1", type: "User" },
+  },
+
+  relations: {
+    user: { reference: "m:1", entity: "User" },
+  },
 });

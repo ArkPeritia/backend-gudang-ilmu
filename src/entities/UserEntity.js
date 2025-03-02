@@ -45,7 +45,7 @@
 
 //     @OneToMany(() => Review, (b) => b.user, { cascade: [Cascade.ALL] })
 //     Review = new Collection() < Review > this;
-    
+
 //     constructor(data) {
 //         this.name = data.name;
 //         this.email = data.email;
@@ -77,10 +77,30 @@ export const User = new EntitySchema({
     title: { type: "string" },
     desc: { type: "string" },
     isActive: { type: "boolean" },
-    region: { type: "string" },
-
+    region: { type: "string" },
+    role: { kind: "m:1", type: "Role" },
+    courses: {
+      kind: "1:m",
+      entity: () => "Course",
+      mappedBy: (course) => course.user,
+    },
+    reviews: {
+      kind: "1:m",
+      entity: () => "Review",
+      mappedBy: (review) => review.user,
+    },
+    orders: {
+      kind: "1:m",
+      entity: () => "Order",
+      mappedBy: (order) => order.user,
+    },
+    reports: {
+      kind: "1:m",
+      entity: () => "Report",
+      mappedBy: (report) => report.user,
+    },
   },
   relations: {
-    role: { reference: "m:1", entity: "Role" },
-  },
+    role: { reference: "m:1", entity: "Role" },
+  },
 });

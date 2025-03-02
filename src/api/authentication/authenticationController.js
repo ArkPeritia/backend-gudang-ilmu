@@ -27,8 +27,8 @@ export class AuthenticationController {
         return res.status(StatusCodes.OK).json(result)
     }
 
-    register(x, y){
-        const result = this.service.register(x.body);
+    async register(x, y){
+        const result = await this.service.register(x.body);
         return y.status(StatusCodes.CREATED).json({
             data: result,
             message: "register success"

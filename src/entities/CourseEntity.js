@@ -49,14 +49,14 @@
 //   Order = new Collection() < Order > this;
 
 //   constructor(data) {
-    // this.name = data.name; //string
+// this.name = data.name; //string
 //     this.price = data.price; //number
 //     this.capacity = data.language; //capacity and string
 //     this.poster = data.poster; //string
 //     this.totalSchedule = data.totalSchedule; number
 //     this.level = data.level; //string
 //     this. desc = data.desc; //string and status boolean
-    
+
 //   }
 // }
 
@@ -77,5 +77,21 @@ export const Course = new EntitySchema({
     level: { type: "string" },
     desc: { type: "string" },
     status: { type: "string" },
-  },
+    user: { kind: "m:1", entity: "User" },
+    subject: { kind: "m:1", entity: "Subject" },
+    CourseSchedule: {
+      kind: "1:m",
+      entity: () => "CourseSchedule",
+      mappedBy: (CourseSchedule) => CourseSchedule.course,
+    },
+    order: {
+      kind: "1:m",
+      entity: () => "Order",
+      mappedBy: (order) => order.course,
+    },
+  },
+  relations: {
+    user: { reference: "m:1", entity: "User" },
+    subject: { reference: "m:1", entity: "Subject" },
+  },
 });

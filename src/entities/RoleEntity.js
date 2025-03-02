@@ -19,7 +19,7 @@
 //   }
 // }
 
-import { EntitySchema } from "@mikro-orm/core";
+import { Entity, EntitySchema } from "@mikro-orm/core";
 import { BaseEntity } from "../utils/BaseEntity.js";
 
 export const Role = new EntitySchema({
@@ -27,6 +27,11 @@ export const Role = new EntitySchema({
   tableName: "role",
   extends: BaseEntity,
   properties: {
-    name: { type: "string" },
-  },
+    name: { type: "string" },
+    users: {
+      kind: "1:m",
+      entity: () => "User",
+      mappedBy: (user) => user.role,
+    },
+  },
 });

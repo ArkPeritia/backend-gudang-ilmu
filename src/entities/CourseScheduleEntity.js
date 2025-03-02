@@ -39,6 +39,10 @@ export const CourseSchedule = new EntitySchema({
     link: { type: "string" },
     chapter: { type: "string" },
     duration: { type: "timestamp" },
-    date: { type: "timestamp" }
-  },
+    date: { type: "timestamp" },
+    course: { kind: "m:1", type: "Course" },
+  },
+  relations: {
+    course: { reference: "m:1", entity: "Course" },
+  },
 });

@@ -32,8 +32,13 @@ export const Payment = new EntitySchema({
   tableName: "payment",
   extends: BaseEntity,
   properties: {
-    type: { type: "string" },
+    type: { type: "string" },
     isActive: { type: "boolean" },
-    proofOfPayment: { type: "string" }
-  },
+    proofOfPayment: { type: "string" },
+    order: { kind: "1:1", type: "Order" },
+  },
+
+  relations: {
+    order: { reference: "1:1", entity: "Order" },
+  },
 });

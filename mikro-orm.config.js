@@ -11,5 +11,5 @@ export default defineConfig({
   dbName: 'Gudang-ilmu',
   host: 'localhost',
   port: '5432',
-  entities: ['./dist/entities'],
+  entities: ['./dist/entities']
 })

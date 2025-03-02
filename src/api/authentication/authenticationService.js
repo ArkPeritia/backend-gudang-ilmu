@@ -11,7 +11,7 @@ export class AuthenticationService {
         return this.repository.login(userBody);
     }
     
-    register(data){
+    async register(data){
         return this.repository.register(data);
     }
 
@@ -23,6 +23,6 @@ export class AuthenticationService {
 
         const result = await this.repository.getAll(search);
 
-        return this.repository.getAll(search);
+        return result;
     }
 };

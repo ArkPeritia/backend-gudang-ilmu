@@ -7,6 +7,11 @@ export const Subject = new EntitySchema({
   tableName: "subject",
   extends: BaseEntity,
   properties: {
-  name: { type: "string" },
-  }
-})
+    name: { type: "string" },
+    courses: {
+      kind: "1:m",
+      entity: () => "Course",
+      mappedBy: (course) => course.subject,
+    },
+  },
+});

@@ -14,7 +14,7 @@
 
 //   @OneToOne(() => Order)
 //   order;
-  
+
 //   @ManyToOne(() => User)
 //   user;
 
@@ -32,7 +32,17 @@ export const Review = new EntitySchema({
   tableName: "review",
   extends: BaseEntity,
   properties: {
-    comment: { type: "string" },
-    star: { type: "number" }
-  },
+    comment: { type: "string" },
+    star: { type: "number" },
+    user: { kind: "m:1", type: "User" },
+    order: { kind: "1:1", type: "Order" },
+  },
+
+  relations: {
+    user: { reference: "m:1", entity: "User" },
+  },
+
+  relations: {
+    order: { reference: "1:1", entity: "Order" },
+  },
 });

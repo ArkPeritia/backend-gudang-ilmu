@@ -47,6 +47,23 @@ export const Order = new EntitySchema({
     tax: { type: "number" },
     isActive: { type: "boolean" },
     subtotal: { type: "number" },
-    totalAmount: { type: "number" }
+    totalAmount: { type: "number" },
+    course: { kind: "m:1", entity: "Course" },
+    user: { kind: "m:1", entity: "User" },
+    payment: {
+      kind: "1:1",
+      entity: () => "Payment",
+      mappedBy: (payment) => payment.order,
+    },
+    report: {
+      kind: "1:1",
+      entity: () => "Report",
+      mappedBy: (report) => report.order,
+    },
   },
+
+relations: {
+  course: { reference: "m:1", entity: "Course" },
+  user: { kind: "m:1", entity: "User" },
+},
 });

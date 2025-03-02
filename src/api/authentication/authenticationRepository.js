@@ -20,10 +20,13 @@ export class AuthenticationRepository {
         // }
     }
 
-    register(data){
+    async register(data){
         // writeFileSync("./api/data.json", Buffer.from(JSON.stringify(data)));
         // console.log(data);
         // return this.data
+        const result = await this.em.create(User, data)
+        await this.em.persistAndFlush()
+        return result;
     }
 
     async getAll(search){

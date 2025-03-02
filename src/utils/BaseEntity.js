@@ -25,7 +25,7 @@ import { EntitySchema} from "@mikro-orm/core";
 export const BaseEntity = new EntitySchema({
   abstract: true,
   properties: {
-    id: { type: "uuid", primary: true },
+    id: { type: "uuid", primary: true, defaultRaw: 'gen_random_uuid()' },
     createdAt: { type: "Date", defaultRaw: "CURRENT_TIMESTAMP" },
     updatedAt: { type: "Date", defaultRaw: "CURRENT_TIMESTAMP", onUpdate: () => new Date() },
     deletedAt: { type: "Date", nullable: true, defaultRaw: "NULL"},
